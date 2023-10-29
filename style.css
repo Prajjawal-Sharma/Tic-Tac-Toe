@@ -1,0 +1,53 @@
+body{
+    background-color: black;
+}
+
+#header{
+    color:bisque;
+    margin-top: 5rem;
+    text-align: center;
+}
+
+.grid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 3px;
+    width: 340px;
+    margin-left: 38vw;
+    margin-top: 10vh;
+    background-color: rgb(183, 190, 197);
+}
+.cell{
+    width: 7rem;
+    height: 7rem;
+    color:rgb(38, 135, 220);
+    text-align: center;
+    background-color: rgb(26, 30, 33);
+    font-size: 5vw;
+}
+button {
+    border-radius: 2rem;
+    width: 6rem;
+    height: 3rem;
+    margin-left: 47vw;
+    margin-top: 10vh;
+    background-color: antiquewhite;
+    transition: transform 0.3s ease;
+  }
+  .main{
+    display: flex;
+  }
+  .turn{
+    margin-top: 26vh;
+  }
+  .chance{
+    color: rgb(255, 255, 255);
+    margin-left: 10vw;
+  }
+  
+  button:hover {
+    transform: translateY(-5px); /* Lift the button up by 5px on Y-axis when hovered */
+    background-color: white;
+    color: red;
+  }
+
