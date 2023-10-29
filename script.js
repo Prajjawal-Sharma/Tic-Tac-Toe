@@ -1,6 +1,8 @@
 let turn = "X";
-let win= false;
-const jsConfetti = new JSConfetti()
+let win = false;
+let moves = 0; 
+
+const jsConfetti = new JSConfetti();
 
 let cells = document.getElementsByClassName('cell');
 
@@ -10,10 +12,17 @@ Array.from(cells).forEach(element => {
         console.log("Clicked!");
         if (!win && celltext.innerText === '') {
             celltext.innerText = turn;
-            turn = update(); 
-            winnerWinnerChickenDinner(); 
-            if(!win){
-            document.getElementsByClassName("chance")[0].innerText = "Turn for " + turn;
+            turn = update();
+            winnerWinnerChickenDinner();
+            moves++; 
+            if (!win) {
+                document.getElementsByClassName("chance")[0].innerText = "Turn for " + turn;
+                if (moves === 9) {
+                    
+                    document.querySelector('.chance').innerText = "It's a Tie!";
+                    document.querySelector('.chance').style.color = 'yellow';
+                    win = true;
+                }
             }
         }
     });
@@ -26,16 +35,16 @@ resetBtn.addEventListener('click', () => {
     cellTexts.forEach(e => {
         e.innerText = '';
     });
-    
-    turn="X";
-    document.getElementsByClassName("chance")[0].innerText= "It's turn for X!";
+
+    turn = "X";
+    document.getElementsByClassName("chance")[0].innerText = "It's turn for X!";
     document.querySelector('.chance').style.color = 'white';
-    win=false;
+    win = false;
+    moves = 0; 
 });
 
-
-function update(){
-    return turn==="X"? "O":"X";
+function update() {
+    return turn === "X" ? "O" : "X";
 }
 
 function winnerWinnerChickenDinner() {
@@ -55,8 +64,8 @@ function winnerWinnerChickenDinner() {
         ) {
             document.querySelector('.chance').innerText = celltext[a].innerText + " is the Winner! 🥳";
             document.querySelector('.chance').style.color = 'red';
-            win=true;
-            jsConfetti.addConfetti()
+            win = true;
+            jsConfetti.addConfetti();
         }
     });
 }
